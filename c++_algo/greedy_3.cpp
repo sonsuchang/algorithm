@@ -8,21 +8,12 @@ int main()
     cin >> N >> res;
     int coin_N[N];
     for (int i = 0; i < N; i++)
-        cin >> coin_N[N];
-    while(1)
+        cin >> coin_N[i];
+    for (int k = N - 1; k >= 0; k--)
     {
-        if (res == 0)
-            break;
-        for (int k = 0; k < N; k++)
-        {
-            if (coin_N[k+1] > res){
-                count += res / coin_N[k];
-                res = res - coin_N[k] * (res / coin_N[k]);
-                cout << count << endl << k << endl << res << endl;
-                break;
-            }
-        }
+        count += res / coin_N[k];
+        res %= coin_N[k];
     }
-    //cout << count;
+    cout << count;
     return 0;
 }
